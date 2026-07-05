@@ -114,11 +114,12 @@ export default function InvitationPage() {
             data-testid="player-card"
           >
             <span className="hud-tag mb-5">Player Card</span>
-            <div className="relative flex-1 min-h-[260px] border border-neutral-200 bg-gradient-to-br from-[#FAFAFA] to-[#F0F0F0] overflow-hidden flex items-center justify-center">
+            <div className="relative flex-1 aspect-[3/4] min-h-[340px] border border-neutral-200 bg-gradient-to-br from-[#FAFAFA] to-[#F0F0F0] overflow-hidden flex items-center justify-center">
               <img
                 src={`${process.env.PUBLIC_URL || ""}/suryansh.jpg`}
                 alt="Suryansh — Level 10 unlocked"
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectPosition: "center 22%" }}
                 data-testid="suryansh-photo"
               />
               {/* Subtle green vignette overlay */}
