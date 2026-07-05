@@ -8,7 +8,6 @@ import {
   UtensilsCrossed,
   DoorOpen,
   Sparkles,
-  Gamepad2,
 } from "lucide-react";
 
 const schedule = [
@@ -47,10 +46,10 @@ export default function InvitationPage() {
               Mission Briefing
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-neutral-900 leading-tight">
-              You&apos;re Invited to
+              You are invited to
               <br />
               <span className="text-[#107C10] glow-flicker">
-                Suryansh&apos;s Birthday Lunch
+                Suryansh&apos;s Birthday Celebration
               </span>
             </h2>
           </div>
@@ -115,18 +114,16 @@ export default function InvitationPage() {
             data-testid="player-card"
           >
             <span className="hud-tag mb-5">Player Card</span>
-            <div className="relative flex-1 min-h-[220px] border border-neutral-200 bg-gradient-to-br from-[#FAFAFA] to-[#F0F0F0] overflow-hidden flex items-center justify-center">
-              <div className="text-center px-4">
-                <div className="w-20 h-20 mx-auto mb-3 border border-[#107C10] bg-[#107C10]/10 flex items-center justify-center">
-                  <Gamepad2 className="w-9 h-9 text-[#107C10]" strokeWidth={2} />
-                </div>
-                <p className="font-heading text-[10px] tracking-hud uppercase text-neutral-500 mb-1">
-                  Avatar Slot
-                </p>
-                <p className="font-body text-xs text-neutral-500">
-                  Suryansh&apos;s photo drops here
-                </p>
-              </div>
+            <div className="relative flex-1 min-h-[260px] border border-neutral-200 bg-gradient-to-br from-[#FAFAFA] to-[#F0F0F0] overflow-hidden flex items-center justify-center">
+              <img
+                src={`${process.env.PUBLIC_URL || ""}/suryansh.jpg`}
+                alt="Suryansh — Level 10 unlocked"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                data-testid="suryansh-photo"
+              />
+              {/* Subtle green vignette overlay */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#107C10]/12 via-transparent to-transparent" />
+              {/* Corner brackets */}
               <div className="pointer-events-none absolute inset-2">
                 <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#107C10]" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#107C10]" />
