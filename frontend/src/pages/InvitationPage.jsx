@@ -8,6 +8,7 @@ import {
   UtensilsCrossed,
   DoorOpen,
   Sparkles,
+  ExternalLink,
 } from "lucide-react";
 
 const schedule = [
@@ -25,8 +26,8 @@ const schedule = [
   },
   {
     time: "1:00 PM",
-    label: "Health Potion",
-    sub: "Lunch is served",
+    label: "Refuel Station",
+    sub: "Buffet Lunch",
     icon: UtensilsCrossed,
   },
 ];
@@ -100,9 +101,16 @@ export default function InvitationPage() {
                   <div className="font-heading text-[10px] tracking-hud uppercase text-neutral-500">
                     Venue
                   </div>
-                  <div className="font-body text-sm text-neutral-900">
+                  <a
+                    href="https://maps.google.com/?cid=13547126924896073272"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="venue-link"
+                    className="font-body text-sm text-neutral-900 hover:text-[#107C10] hover:underline underline-offset-2 decoration-[#107C10] transition-colors inline-flex items-center gap-1"
+                  >
                     Desi Masala, RR Nagar, Bangalore
-                  </div>
+                    <ExternalLink className="w-3 h-3 text-[#107C10]" />
+                  </a>
                 </div>
               </div>
             </div>
