@@ -1,0 +1,22 @@
+{
+  "summary": "Frontend-only smoke test of Xbox-themed Suryansh 10th birthday invitation. Verified page load, physics hero, gravity toggle, schedule tiles, message card copy, RSVP form (empty-name validation + Accepting + Declining WhatsApp URLs), and mobile 375x800 layout. All 9 scenarios pass.",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Page loads at / with hero visible; 'LEVEL 10 UNLOCKED' heading present",
+    "physics-hero canvas rendered",
+    "gravity-toggle switches gravity-state label from '0-G' to 'ON'",
+    "schedule-tile-0/1/2 present with times 12:00 PM, 12:30 PM, 1:00 PM and labels Lobby Opens / Level Up / Health Potion (rendered UPPERCASE via CSS)",
+    "message-card contains 'double digits', 'blessings', 'Sunday · 26 July 2026', 'Desi Masala, RR Nagar, Bangalore'",
+    "All RSVP form data-testids present: rsvp-form, rsvp-name-input, rsvp-attending-yes/no, rsvp-guests-select, rsvp-notes-textarea, rsvp-submit-btn",
+    "Empty name submission blocked by HTML5 required validation; window.open NOT called",
+    "Accepting RSVP opens https://wa.me/919980011330?text=... with encoded message containing name (Uncle Arjun), 'Yes — Accepting Invitation', guest count 3, notes 'No nuts please', and \\n line breaks",
+    "Declining RSVP opens URL with 'No — Regretfully Declining' and correct name",
+    "Mobile 375x800: layout stacks and physics-hero remains visible"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "retest_needed": false,
+  "notes": "Empty-name path uses native browser validity (input has required attr) instead of showing sonner toast; behaviour still correctly prevents WhatsApp open, matches acceptance criteria. Schedule labels appear uppercased via CSS text-transform; textual match against 'Lobby Opens' fails on inner_text but visual/DOM content is correct.",
+  "full_testing_deferred": true
+}

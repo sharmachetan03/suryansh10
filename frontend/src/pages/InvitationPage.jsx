@@ -1,0 +1,203 @@
+import PhysicsCanvas from "@/components/PhysicsCanvas";
+import RsvpForm from "@/components/RsvpForm";
+import {
+  MapPin,
+  Calendar,
+  Clock,
+  Cake,
+  UtensilsCrossed,
+  DoorOpen,
+  Sparkles,
+  Gamepad2,
+} from "lucide-react";
+
+const schedule = [
+  {
+    time: "12:00 PM",
+    label: "Lobby Opens",
+    sub: "Arrival & warm-up",
+    icon: DoorOpen,
+  },
+  {
+    time: "12:30 PM",
+    label: "Level Up",
+    sub: "Cake cutting ceremony",
+    icon: Cake,
+  },
+  {
+    time: "1:00 PM",
+    label: "Health Potion",
+    sub: "Lunch is served",
+    icon: UtensilsCrossed,
+  },
+];
+
+export default function InvitationPage() {
+  return (
+    <div className="min-h-screen bg-[#0A0A0A] text-white">
+      {/* Hero */}
+      <PhysicsCanvas />
+
+      {/* Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        {/* Section heading */}
+        <div className="mb-10 flex items-start justify-between gap-6 flex-wrap">
+          <div>
+            <span className="hud-tag mb-4" data-testid="section-tag">Mission Briefing</span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-white leading-tight">
+              You&apos;re Invited to
+              <br />
+              <span className="text-[#1BE61B] glow-text">Suryansh&apos;s Birthday Lunch</span>
+            </h2>
+          </div>
+          <div className="hidden lg:flex items-center gap-2 font-heading text-[11px] tracking-hud uppercase text-neutral-500">
+            <Sparkles className="w-4 h-4 text-[#1BE61B]" /> Family &amp; Friends Only
+          </div>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+          {/* Message card — spans 2 cols */}
+          <div
+            className="lg:col-span-2 relative bg-[#0F0F0F] border border-[#2a2a2a] p-6 sm:p-8 corner-cut"
+            data-testid="message-card"
+          >
+            <span className="hud-tag mb-5">Message from the Family</span>
+            <p className="font-body text-base sm:text-lg text-neutral-200 leading-relaxed">
+              Our little boy{" "}
+              <span className="text-[#1BE61B] font-semibold">Suryansh</span> is
+              crossing a major milestone and entering the double digits! We are
+              incredibly blessed to watch him turn{" "}
+              <span className="text-[#1BE61B] font-semibold">10</span>, and his
+              childhood journey wouldn&apos;t be complete without the love and
+              blessings of our dear family and friends.
+            </p>
+            <p className="font-body text-base sm:text-lg text-neutral-300 leading-relaxed mt-4">
+              We would be absolutely delighted and honored to have you join us
+              to celebrate his special day over lunch. Your presence and
+              blessings mean the world to Suryansh and our family.
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex items-center gap-3 border border-[#222] bg-[#0A0A0A] px-4 py-3">
+                <Calendar className="w-4 h-4 text-[#1BE61B] shrink-0" />
+                <div>
+                  <div className="font-heading text-[10px] tracking-hud uppercase text-neutral-500">
+                    Date
+                  </div>
+                  <div className="font-body text-sm text-white">
+                    Sunday · 26 July 2026
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 border border-[#222] bg-[#0A0A0A] px-4 py-3">
+                <MapPin className="w-4 h-4 text-[#1BE61B] shrink-0" />
+                <div>
+                  <div className="font-heading text-[10px] tracking-hud uppercase text-neutral-500">
+                    Venue
+                  </div>
+                  <div className="font-body text-sm text-white">
+                    Desi Masala, RR Nagar, Bangalore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Player card / photo placeholder */}
+          <div
+            className="relative bg-[#0F0F0F] border border-[#2a2a2a] p-6 corner-cut flex flex-col"
+            data-testid="player-card"
+          >
+            <span className="hud-tag mb-5">Player Card</span>
+            <div className="relative flex-1 min-h-[220px] border border-[#222] bg-gradient-to-br from-[#0A0A0A] to-[#151515] overflow-hidden flex items-center justify-center">
+              {/* Photo placeholder */}
+              <div className="text-center px-4">
+                <div className="w-20 h-20 mx-auto mb-3 border border-[#107C10] bg-[#107C10]/10 flex items-center justify-center">
+                  <Gamepad2 className="w-9 h-9 text-[#1BE61B]" strokeWidth={2} />
+                </div>
+                <p className="font-heading text-[10px] tracking-hud uppercase text-neutral-500 mb-1">
+                  Avatar Slot
+                </p>
+                <p className="font-body text-xs text-neutral-400">
+                  Suryansh&apos;s photo drops here
+                </p>
+              </div>
+              {/* Corner brackets */}
+              <div className="pointer-events-none absolute inset-2">
+                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#107C10]" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#107C10]" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#107C10]" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#107C10]" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <div className="flex items-baseline justify-between">
+                <span className="font-heading text-xl font-bold uppercase text-white tracking-wide">
+                  Suryansh
+                </span>
+                <span className="font-mono-hud text-[#1BE61B] glow-text text-sm">
+                  LVL 10
+                </span>
+              </div>
+              <div className="mt-2 h-1.5 w-full bg-[#0A0A0A] border border-[#222]">
+                <div className="h-full bg-gradient-to-r from-[#107C10] to-[#1BE61B] w-full" />
+              </div>
+              <p className="mt-2 font-body text-[11px] text-neutral-500">
+                XP maxed · Achievement unlocked
+              </p>
+            </div>
+          </div>
+
+          {/* Schedule tiles */}
+          {schedule.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="relative bg-[#0F0F0F] border border-[#2a2a2a] hover:border-[#107C10] transition-all p-6 corner-cut group"
+                data-testid={`schedule-tile-${idx}`}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-11 h-11 flex items-center justify-center bg-[#107C10]/10 border border-[#107C10] group-hover:bg-[#107C10]/20 transition-colors">
+                    <Icon className="w-5 h-5 text-[#1BE61B]" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-heading text-[10px] tracking-hud uppercase text-neutral-600">
+                    T-{idx + 1}
+                  </span>
+                </div>
+                <div className="flex items-baseline gap-2 mb-1">
+                  <Clock className="w-3.5 h-3.5 text-neutral-500" />
+                  <span className="font-mono-hud text-[#1BE61B] glow-text text-sm">
+                    {item.time}
+                  </span>
+                </div>
+                <h4 className="font-heading text-xl font-bold uppercase text-white tracking-wide">
+                  {item.label}
+                </h4>
+                <p className="font-body text-sm text-neutral-400 mt-1">
+                  {item.sub}
+                </p>
+              </div>
+            );
+          })}
+
+          {/* RSVP form spans full width */}
+          <div className="lg:col-span-3">
+            <RsvpForm />
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-14 pt-8 border-t border-[#1f1f1f] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <p className="font-heading text-[11px] tracking-hud uppercase text-neutral-500">
+            © Suryansh&apos;s 10th · Powered by Family Love
+          </p>
+          <p className="font-body text-xs text-neutral-500">
+            See you at Desi Masala, RR Nagar · 26 July 2026
+          </p>
+        </footer>
+      </main>
+    </div>
+  );
+}
