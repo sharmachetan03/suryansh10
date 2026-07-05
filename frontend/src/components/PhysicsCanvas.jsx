@@ -32,14 +32,79 @@ const icons = {
       <circle cx='94' cy='54' r='3.5' fill='${GREEN}'/>
     </svg>`,
   },
-  flame: {
-    vbW: 80,
+
+  // --- DOOM Slayer helmet ---
+  doomHelmet: {
+    vbW: 100,
     vbH: 100,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 100'>
-      <path d='M40 6 C46 24 62 32 62 56 C62 76 52 92 40 92 C28 92 18 76 18 56 C18 44 26 40 30 32 C34 24 34 16 40 6 Z' fill='${BG}' stroke='${GREEN}' stroke-width='2.5'/>
-      <path d='M40 30 C44 42 52 48 52 62 C52 74 46 84 40 84 C34 84 28 74 28 62 C28 54 32 52 34 48 C36 42 36 38 40 30 Z' fill='${GREEN}' opacity='0.85'/>
+    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <path d='M22 32 L14 12 L28 28 Z M78 32 L86 12 L72 28 Z' fill='${GREEN}' stroke='${GREEN_DEEP}' stroke-width='1.5' stroke-linejoin='round'/>
+      <path d='M22 32 Q30 18 50 18 Q70 18 78 32 L84 55 Q82 78 68 88 L32 88 Q18 78 16 55 Z' fill='${BG}' stroke='${GREEN}' stroke-width='3' stroke-linejoin='round'/>
+      <path d='M26 44 L44 50 L44 58 L26 60 Z' fill='${GREEN}'/>
+      <path d='M74 44 L56 50 L56 58 L74 60 Z' fill='${GREEN}'/>
+      <rect x='47' y='30' width='6' height='34' fill='${GREEN}'/>
+      <path d='M38 72 L62 72 L58 84 L42 84 Z' fill='${GREEN}'/>
+      <line x1='45' y1='72' x2='45' y2='84' stroke='${BG}' stroke-width='1.2'/>
+      <line x1='50' y1='72' x2='50' y2='84' stroke='${BG}' stroke-width='1.2'/>
+      <line x1='55' y1='72' x2='55' y2='84' stroke='${BG}' stroke-width='1.2'/>
     </svg>`,
   },
+
+  // --- DOOM wordmark (blocky, official-style) ---
+  doomLogo: {
+    vbW: 260,
+    vbH: 88,
+    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 88'>
+      <rect x='2' y='2' width='256' height='84' fill='${BG}' stroke='${GREEN}' stroke-width='2.5'/>
+      <!-- D -->
+      <path d='M20 18 L20 70 L48 70 Q66 70 66 44 Q66 18 48 18 Z M34 32 L48 32 Q52 32 52 44 Q52 56 48 56 L34 56 Z' fill='${GREEN}' fill-rule='evenodd'/>
+      <!-- O -->
+      <path d='M72 18 L106 18 Q120 18 120 30 L120 58 Q120 70 106 70 L72 70 Q58 70 58 58 L58 30 Q58 18 72 18 Z M72 32 L72 56 L106 56 L106 32 Z' fill='${GREEN}' fill-rule='evenodd'/>
+      <!-- O -->
+      <path d='M140 18 L174 18 Q188 18 188 30 L188 58 Q188 70 174 70 L140 70 Q126 70 126 58 L126 30 Q126 18 140 18 Z M140 32 L140 56 L174 56 L174 32 Z' fill='${GREEN}' fill-rule='evenodd'/>
+      <!-- M -->
+      <path d='M196 70 L196 18 L214 18 L226 42 L238 18 L256 18 L256 70 L242 70 L242 40 L230 62 L222 62 L210 40 L210 70 Z' fill='${GREEN}'/>
+    </svg>`,
+  },
+
+  // --- CALL OF DUTY wordmark tile ---
+  codLogo: {
+    vbW: 280,
+    vbH: 88,
+    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 88'>
+      <rect x='2' y='2' width='276' height='84' fill='${BG}' stroke='${GREEN}' stroke-width='2.5'/>
+      <!-- Top row: CALL OF -->
+      <text x='140' y='36' font-family='Rajdhani, Impact, sans-serif' font-weight='700' font-size='24' letter-spacing='6' text-anchor='middle' fill='${GREEN}'>CALL OF</text>
+      <!-- Center star -->
+      <path d='M50 50 L54 58 L62 58 L56 63 L58 71 L50 66 L42 71 L44 63 L38 58 L46 58 Z' fill='${GREEN}'/>
+      <path d='M230 50 L234 58 L242 58 L236 63 L238 71 L230 66 L222 71 L224 63 L218 58 L226 58 Z' fill='${GREEN}'/>
+      <!-- DUTY big -->
+      <text x='140' y='72' font-family='Rajdhani, Impact, sans-serif' font-weight='700' font-size='36' letter-spacing='10' text-anchor='middle' fill='${GREEN}'>DUTY</text>
+    </svg>`,
+  },
+
+  // --- NEED FOR SPEED wordmark tile (dynamic italic feel) ---
+  nfsLogo: {
+    vbW: 280,
+    vbH: 88,
+    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 88'>
+      <rect x='2' y='2' width='276' height='84' fill='${BG}' stroke='${GREEN}' stroke-width='2.5'/>
+      <!-- Speed slashes background -->
+      <g stroke='${GREEN}' stroke-width='2' opacity='0.35' stroke-linecap='round'>
+        <line x1='232' y1='22' x2='268' y2='16'/>
+        <line x1='230' y1='34' x2='270' y2='30'/>
+        <line x1='232' y1='46' x2='266' y2='44'/>
+        <line x1='230' y1='58' x2='268' y2='58'/>
+        <line x1='232' y1='70' x2='264' y2='72'/>
+      </g>
+      <!-- NEED FOR -->
+      <text x='16' y='34' font-family='Rajdhani, Impact, sans-serif' font-weight='600' font-size='20' letter-spacing='4' fill='${GREEN_DEEP}' font-style='italic'>NEED FOR</text>
+      <!-- SPEED big italic -->
+      <text x='16' y='74' font-family='Rajdhani, Impact, sans-serif' font-weight='700' font-size='42' letter-spacing='2' fill='${GREEN}' font-style='italic'>SPEED</text>
+    </svg>`,
+  },
+
+  // --- Sports car (NFS-flavor) ---
   car: {
     vbW: 140,
     vbH: 70,
@@ -51,135 +116,17 @@ const icons = {
       <path d='M120 40 L132 42' stroke='${GREEN}' stroke-width='2'/>
     </svg>`,
   },
-
-  // --- DOOM Slayer helmet — the horned Slayer mask silhouette ---
-  doomHelmet: {
-    vbW: 100,
-    vbH: 100,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-      <!-- Horns -->
-      <path d='M22 32 L14 12 L28 28 Z M78 32 L86 12 L72 28 Z' fill='${GREEN}' stroke='${GREEN_DEEP}' stroke-width='1.5' stroke-linejoin='round'/>
-      <!-- Helmet dome -->
-      <path d='M22 32 Q30 18 50 18 Q70 18 78 32 L84 55 Q82 78 68 88 L32 88 Q18 78 16 55 Z' fill='${BG}' stroke='${GREEN}' stroke-width='3' stroke-linejoin='round'/>
-      <!-- Angular visor / eyes -->
-      <path d='M26 44 L44 50 L44 58 L26 60 Z' fill='${GREEN}'/>
-      <path d='M74 44 L56 50 L56 58 L74 60 Z' fill='${GREEN}'/>
-      <!-- Center forehead strip -->
-      <rect x='47' y='30' width='6' height='34' fill='${GREEN}'/>
-      <!-- Cheek plates -->
-      <path d='M26 66 L36 70 L34 82 L24 78 Z' fill='none' stroke='${GREEN}' stroke-width='2'/>
-      <path d='M74 66 L64 70 L66 82 L76 78 Z' fill='none' stroke='${GREEN}' stroke-width='2'/>
-      <!-- Mouth grille -->
-      <path d='M38 72 L62 72 L58 84 L42 84 Z' fill='${GREEN}'/>
-      <line x1='45' y1='72' x2='45' y2='84' stroke='${BG}' stroke-width='1.2'/>
-      <line x1='50' y1='72' x2='50' y2='84' stroke='${BG}' stroke-width='1.2'/>
-      <line x1='55' y1='72' x2='55' y2='84' stroke='${BG}' stroke-width='1.2'/>
-    </svg>`,
-  },
-
-  // --- Call of Duty — military shield with star and crossed dog tags ---
-  codShield: {
-    vbW: 100,
-    vbH: 100,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-      <!-- Shield outer -->
-      <path d='M50 6 L84 18 L82 55 Q80 78 50 94 Q20 78 18 55 L16 18 Z' fill='${BG}' stroke='${GREEN}' stroke-width='3' stroke-linejoin='round'/>
-      <!-- Shield inner accent -->
-      <path d='M50 14 L76 24 L74 54 Q72 72 50 84 Q28 72 26 54 L24 24 Z' fill='none' stroke='${GREEN}' stroke-width='1' opacity='0.5'/>
-      <!-- 5-point star -->
-      <path d='M50 26 L55.5 42 L72 42 L58.5 52 L64 68 L50 58 L36 68 L41.5 52 L28 42 L44.5 42 Z' fill='${GREEN}'/>
-      <!-- Crossed rifles below star -->
-      <g stroke='${GREEN}' stroke-width='2.5' stroke-linecap='round'>
-        <line x1='32' y1='72' x2='68' y2='82'/>
-        <line x1='68' y1='72' x2='32' y2='82'/>
-      </g>
-      <!-- Rifle butts -->
-      <circle cx='32' cy='72' r='2.5' fill='${GREEN}'/>
-      <circle cx='68' cy='72' r='2.5' fill='${GREEN}'/>
-    </svg>`,
-  },
-
-  // --- COD skull with beret (alt icon for variety) ---
-  codSkull: {
-    vbW: 100,
-    vbH: 100,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-      <!-- Beret -->
-      <path d='M22 30 Q28 12 60 14 Q84 16 82 32 L82 36 L20 36 Z' fill='${GREEN}' stroke='${GREEN_DEEP}' stroke-width='2' stroke-linejoin='round'/>
-      <circle cx='72' cy='22' r='4' fill='${BG}'/>
-      <!-- Skull -->
-      <path d='M50 34 C30 34 20 46 20 62 v10 c0 3 2 5 5 6 l3 1 v10 c0 2 2 4 4 4 h4 v-6 h4 v6 h6 v-6 h4 v6 h4 c2 0 4-2 4-4 V79 l3-1 c3-1 5-3 5-6 V62 C80 46 70 34 50 34 z' fill='${BG}' stroke='${GREEN}' stroke-width='2.5'/>
-      <ellipse cx='38' cy='60' rx='6' ry='7' fill='${GREEN}'/>
-      <ellipse cx='62' cy='60' rx='6' ry='7' fill='${GREEN}'/>
-      <path d='M47 72 L50 78 L53 72 Z' fill='${GREEN}'/>
-    </svg>`,
-  },
-
-  // --- NFS — bold angular "N" mark with speed slashes (Need for Speed style) ---
-  nfsMark: {
-    vbW: 120,
-    vbH: 80,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'>
-      <!-- Backdrop plate -->
-      <path d='M6 12 L114 12 L108 68 L0 68 Z' fill='${BG}' stroke='${GREEN}' stroke-width='2.5' stroke-linejoin='round'/>
-      <!-- Bold N with speed skew -->
-      <path d='M22 60 L30 20 L44 20 L58 46 L64 20 L78 20 L70 60 L56 60 L42 34 L36 60 Z' fill='${GREEN}'/>
-      <!-- Speed slashes trailing -->
-      <g stroke='${GREEN}' stroke-width='3' stroke-linecap='round'>
-        <line x1='84' y1='26' x2='104' y2='24'/>
-        <line x1='82' y1='40' x2='106' y2='38'/>
-        <line x1='80' y1='54' x2='102' y2='52'/>
-      </g>
-    </svg>`,
-  },
-
-  // --- NFS — winged racing emblem alt ---
-  nfsWing: {
-    vbW: 140,
-    vbH: 70,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 70'>
-      <!-- Central diamond -->
-      <path d='M70 12 L82 35 L70 58 L58 35 Z' fill='${GREEN}' stroke='${GREEN_DEEP}' stroke-width='1.5'/>
-      <!-- Left wing feathers -->
-      <g fill='${BG}' stroke='${GREEN}' stroke-width='2' stroke-linejoin='round'>
-        <path d='M58 30 L20 22 L40 32 Z'/>
-        <path d='M58 35 L10 35 L36 40 Z'/>
-        <path d='M58 40 L20 48 L40 42 Z'/>
-      </g>
-      <!-- Right wing feathers -->
-      <g fill='${BG}' stroke='${GREEN}' stroke-width='2' stroke-linejoin='round'>
-        <path d='M82 30 L120 22 L100 32 Z'/>
-        <path d='M82 35 L130 35 L104 40 Z'/>
-        <path d='M82 40 L120 48 L100 42 Z'/>
-      </g>
-      <!-- Center "S" swoosh -->
-      <path d='M65 28 Q72 32 75 35 Q72 38 65 42' fill='none' stroke='${BG}' stroke-width='2' stroke-linecap='round'/>
-    </svg>`,
-  },
-
-  // --- Xbox wordmark tile (kept as light text plate) ---
-  xboxText: {
-    vbW: 220,
-    vbH: 60,
-    svg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 60'>
-      <rect x='1' y='1' width='218' height='58' fill='${BG}' stroke='${GREEN}' stroke-width='2'/>
-      <text x='110' y='40' font-family='Rajdhani, sans-serif' font-weight='700' font-size='30' text-anchor='middle' fill='${GREEN_DEEP}' letter-spacing='4'>XBOX</text>
-    </svg>`,
-  },
 };
 
-// Spec: which bodies, size, count
+// Curated set — fewer items, thoughtfully spaced
 const bodySpec = [
-  { key: "xbox", w: 68, h: 68, count: 3 },
-  { key: "controller", w: 108, h: 72, count: 2 },
-  { key: "flame", w: 52, h: 65, count: 2 },
-  { key: "car", w: 108, h: 54, count: 2 },
-  { key: "doomHelmet", w: 78, h: 78, count: 2 },
-  { key: "codShield", w: 72, h: 72, count: 1 },
-  { key: "codSkull", w: 68, h: 68, count: 1 },
-  { key: "nfsMark", w: 108, h: 72, count: 1 },
-  { key: "nfsWing", w: 120, h: 60, count: 1 },
-  { key: "xboxText", w: 110, h: 30, count: 1 },
+  { key: "xbox", w: 70, h: 70, count: 2 },
+  { key: "controller", w: 112, h: 74, count: 1 },
+  { key: "doomLogo", w: 168, h: 56, count: 1 },
+  { key: "doomHelmet", w: 78, h: 78, count: 1 },
+  { key: "codLogo", w: 176, h: 56, count: 1 },
+  { key: "nfsLogo", w: 176, h: 56, count: 1 },
+  { key: "car", w: 116, h: 58, count: 1 },
 ];
 
 export default function PhysicsCanvas() {
@@ -248,11 +195,26 @@ export default function PhysicsCanvas() {
     Composite.add(engine.world, walls);
 
     const bodies = [];
+    const totalCount = bodySpec.reduce((s, sp) => s + sp.count, 0);
+    // Grid layout for initial spawn to avoid clumping
+    const cols = Math.min(4, Math.max(2, Math.ceil(Math.sqrt(totalCount * (width / height)))));
+    const rows = Math.ceil(totalCount / cols);
+    const cellW = width / cols;
+    const cellH = height / rows;
+    let slot = 0;
     bodySpec.forEach((spec) => {
       const icon = icons[spec.key];
       for (let i = 0; i < spec.count; i++) {
-        const x = 60 + Math.random() * (width - 120);
-        const y = 40 + Math.random() * (height - 80);
+        const col = slot % cols;
+        const row = Math.floor(slot / cols);
+        const cx = cellW * (col + 0.5);
+        const cy = cellH * (row + 0.5);
+        // small jitter within the cell so it feels organic
+        const jx = (Math.random() - 0.5) * cellW * 0.35;
+        const jy = (Math.random() - 0.5) * cellH * 0.35;
+        const x = Math.max(spec.w / 2 + 10, Math.min(width - spec.w / 2 - 10, cx + jx));
+        const y = Math.max(spec.h / 2 + 10, Math.min(height - spec.h / 2 - 10, cy + jy));
+        slot++;
         const body = Bodies.rectangle(x, y, spec.w, spec.h, {
           restitution: 0.92,
           friction: 0.02,
@@ -268,10 +230,10 @@ export default function PhysicsCanvas() {
           },
         });
         Body.setVelocity(body, {
-          x: (Math.random() - 0.5) * 2.4,
-          y: (Math.random() - 0.5) * 2.4,
+          x: (Math.random() - 0.5) * 1.8,
+          y: (Math.random() - 0.5) * 1.8,
         });
-        Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.05);
+        Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.03);
         bodies.push(body);
       }
     });
