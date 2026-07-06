@@ -176,6 +176,8 @@ const bodyDefs = [
   { key: "x3", w: 68, h: 68, vbW: 120, vbH: 120, svg: smallXboxSvg },
   { key: "x4", w: 76, h: 76, vbW: 120, vbH: 120, svg: smallXboxSvg },
   { key: "ctrl", w: 116, h: 74, vbW: 140, vbH: 90, svg: smallControllerSvg },
+  { key: "vctrl1", w: 72, h: 46, vbW: 140, vbH: 90, svg: smallControllerSvg },
+  { key: "vctrl2", w: 68, h: 44, vbW: 140, vbH: 90, svg: smallControllerSvg },
 ];
 
 // ---- Particle field ----
@@ -304,13 +306,15 @@ export default function HeroHeader() {
     });
     Composite.add(engine.world, xboxGuard);
 
-    // Positions: 5 orbits around the central Xbox (4 X orbs + 1 controller)
+    // Positions: 4 X orbs + 1 big controller + 2 small controllers, orbiting the central Xbox
     const positions = [
       { x: width * 0.15, y: height * 0.25 },
       { x: width * 0.85, y: height * 0.28 },
       { x: width * 0.12, y: height * 0.78 },
       { x: width * 0.88, y: height * 0.76 },
       { x: width * 0.5, y: height * 0.85 },
+      { x: width * 0.35, y: height * 0.14 },
+      { x: width * 0.65, y: height * 0.14 },
     ];
 
     // Also reduce sizes on small viewports to avoid crowding
