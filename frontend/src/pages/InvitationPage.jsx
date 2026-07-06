@@ -1,4 +1,4 @@
-import PhysicsCanvas from "@/components/PhysicsCanvas";
+import HeroHeader from "@/components/HeroHeader";
 import RsvpForm from "@/components/RsvpForm";
 import {
   MapPin,
@@ -36,7 +36,7 @@ export default function InvitationPage() {
   return (
     <div className="min-h-screen bg-[#F5F5F5] text-neutral-900">
       {/* Hero */}
-      <PhysicsCanvas />
+      <HeroHeader />
 
       {/* Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
