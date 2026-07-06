@@ -141,7 +141,6 @@ const bodyDefs = [
   { key: "x3", w: 96, h: 96, vbW: 120, vbH: 120 },
   { key: "x4", w: 68, h: 68, vbW: 120, vbH: 120 },
   { key: "x5", w: 88, h: 88, vbW: 120, vbH: 120 },
-  { key: "x6", w: 60, h: 60, vbW: 120, vbH: 120 },
 ];
 
 // ---- Particle field ----
