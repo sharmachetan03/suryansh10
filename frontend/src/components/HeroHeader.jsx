@@ -141,6 +141,7 @@ const bodyDefs = [
   { key: "x3", w: 96, h: 96, vbW: 120, vbH: 120 },
   { key: "x4", w: 68, h: 68, vbW: 120, vbH: 120 },
   { key: "x5", w: 88, h: 88, vbW: 120, vbH: 120 },
+  { key: "x6", w: 76, h: 76, vbW: 120, vbH: 120 },
 ];
 
 // ---- Particle field ----
@@ -285,7 +286,7 @@ export default function HeroHeader() {
       const b = Bodies.rectangle(p.x, p.y, def.w, def.h, {
         restitution: 0.9,
         friction: 0.02,
-        frictionAir: 0.02,
+        frictionAir: 0.045,
         density: 0.001,
         chamfer: { radius: def.w / 2 },
         render: {
@@ -297,10 +298,10 @@ export default function HeroHeader() {
         },
       });
       Body.setVelocity(b, {
-        x: (Math.random() - 0.5) * 1.4,
-        y: (Math.random() - 0.5) * 1.4,
+        x: (Math.random() - 0.5) * 0.5,
+        y: (Math.random() - 0.5) * 0.5,
       });
-      Body.setAngularVelocity(b, (Math.random() - 0.5) * 0.02);
+      Body.setAngularVelocity(b, (Math.random() - 0.5) * 0.008);
       bodies.push(b);
     });
     Composite.add(engine.world, bodies);
@@ -325,24 +326,23 @@ export default function HeroHeader() {
         const dx = b.position.x - cx;
         const dy = b.position.y - cy;
         const dist = Math.hypot(dx, dy);
-        // Gentle radial push if too close to center
         if (dist < 180 && dist > 1) {
-          const push = (180 - dist) * 0.00003;
+          const push = (180 - dist) * 0.00002;
           Body.applyForce(b, b.position, {
             x: (dx / dist) * push * b.mass,
             y: (dy / dist) * push * b.mass,
           });
         }
-        // Zero-G drift maintenance
+        // Very gentle drift maintenance for a slow float
         const speed = Math.hypot(b.velocity.x, b.velocity.y);
-        if (speed < 0.4) {
+        if (speed < 0.15) {
           Body.applyForce(b, b.position, {
-            x: (Math.random() - 0.5) * 0.00045 * b.mass,
-            y: (Math.random() - 0.5) * 0.00045 * b.mass,
+            x: (Math.random() - 0.5) * 0.00018 * b.mass,
+            y: (Math.random() - 0.5) * 0.00018 * b.mass,
           });
         }
       });
-    }, 650);
+    }, 900);
 
     Render.run(render);
     const runner = Runner.create();
