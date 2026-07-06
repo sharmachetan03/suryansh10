@@ -3,10 +3,6 @@ import Matter from "matter-js";
 
 const XBOX_GREEN = "#22C55E";
 const XBOX_GREEN_DEEP = "#107C10";
-const DOOM_FIRE = "#F97316";
-const DOOM_RED = "#DC2626";
-const COD_STEEL = "#94A3B8";
-const NFS_PINK = "#EC4899";
 
 const svgToDataUrl = (s) => `data:image/svg+xml;utf8,${encodeURIComponent(s)}`;
 
@@ -113,106 +109,39 @@ const XboxSphere = () => (
   </div>
 );
 
-// ---- Emblem SVGs (fiery DOOM, steel COD, hot-pink NFS) ----
-const doomEmblemSvg = `
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'>
+// ---- Small Xbox X orb SVG (for orbiting bodies) ----
+const smallXboxSvg = `
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
   <defs>
-    <radialGradient id='dgo' cx='0.5' cy='0.5' r='0.55'>
-      <stop offset='0' stop-color='${DOOM_FIRE}' stop-opacity='0.5'/>
-      <stop offset='1' stop-color='${DOOM_FIRE}' stop-opacity='0'/>
+    <radialGradient id='sxo' cx='0.35' cy='0.3' r='0.75'>
+      <stop offset='0' stop-color='#F0FDF4'/>
+      <stop offset='0.35' stop-color='#4ADE80'/>
+      <stop offset='0.75' stop-color='#16A34A'/>
+      <stop offset='1' stop-color='#052E16'/>
     </radialGradient>
-    <linearGradient id='dfire' x1='0.5' y1='0' x2='0.5' y2='1'>
-      <stop offset='0' stop-color='#FBBF24'/>
-      <stop offset='0.55' stop-color='${DOOM_FIRE}'/>
-      <stop offset='1' stop-color='${DOOM_RED}'/>
-    </linearGradient>
-  </defs>
-  <circle cx='80' cy='80' r='78' fill='url(#dgo)'/>
-  <path d='M80 14 L134 44 L134 116 L80 146 L26 116 L26 44 Z' fill='#1A0500' stroke='url(#dfire)' stroke-width='3'/>
-  <g transform='translate(30 30)'>
-    <path d='M22 32 L14 12 L28 28 Z M78 32 L86 12 L72 28 Z' fill='url(#dfire)'/>
-    <path d='M22 32 Q30 18 50 18 Q70 18 78 32 L84 55 Q82 78 68 88 L32 88 Q18 78 16 55 Z' fill='#2A0800' stroke='url(#dfire)' stroke-width='2.5'/>
-    <rect x='47' y='30' width='6' height='34' fill='url(#dfire)'/>
-    <path d='M26 44 L44 50 L44 58 L26 60 Z' fill='url(#dfire)'/>
-    <path d='M74 44 L56 50 L56 58 L74 60 Z' fill='url(#dfire)'/>
-    <path d='M38 72 L62 72 L58 84 L42 84 Z' fill='url(#dfire)'/>
-  </g>
-  <g fill='#FBBF24'>
-    <circle cx='18' cy='42' r='2'/>
-    <circle cx='142' cy='58' r='1.6'/>
-    <circle cx='24' cy='118' r='1.8'/>
-    <circle cx='140' cy='108' r='2.2'/>
-    <circle cx='80' cy='6' r='1.4'/>
-  </g>
-</svg>`;
-
-const codEmblemSvg = `
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'>
-  <defs>
-    <radialGradient id='cgo' cx='0.5' cy='0.5' r='0.55'>
-      <stop offset='0' stop-color='${COD_STEEL}' stop-opacity='0.4'/>
-      <stop offset='1' stop-color='${COD_STEEL}' stop-opacity='0'/>
+    <radialGradient id='sxg' cx='0.5' cy='0.5' r='0.5'>
+      <stop offset='0.55' stop-color='${XBOX_GREEN}' stop-opacity='0'/>
+      <stop offset='0.85' stop-color='${XBOX_GREEN}' stop-opacity='0.35'/>
+      <stop offset='1' stop-color='${XBOX_GREEN}' stop-opacity='0'/>
     </radialGradient>
-    <linearGradient id='steel' x1='0.5' y1='0' x2='0.5' y2='1'>
-      <stop offset='0' stop-color='#F1F5F9'/>
-      <stop offset='0.55' stop-color='${COD_STEEL}'/>
-      <stop offset='1' stop-color='#475569'/>
-    </linearGradient>
   </defs>
-  <circle cx='80' cy='80' r='78' fill='url(#cgo)'/>
-  <path d='M80 16 L134 30 L132 88 Q130 118 80 142 Q30 118 28 88 L26 30 Z' fill='#1E293B' stroke='url(#steel)' stroke-width='3'/>
-  <path d='M80 24 L124 36 L122 86 Q120 112 80 132 Q40 112 38 86 L36 36 Z' fill='none' stroke='#64748B' stroke-width='1' opacity='0.6'/>
-  <path d='M80 40 L88 62 L112 62 L92 76 L100 100 L80 86 L60 100 L68 76 L48 62 L72 62 Z' fill='url(#steel)' stroke='#F1F5F9' stroke-width='1'/>
-  <g stroke='url(#steel)' stroke-width='3.2' stroke-linecap='round'>
-    <line x1='54' y1='110' x2='106' y2='124'/>
-    <line x1='106' y1='110' x2='54' y2='124'/>
+  <circle cx='60' cy='60' r='58' fill='url(#sxg)'/>
+  <circle cx='60' cy='60' r='42' fill='url(#sxo)' stroke='${XBOX_GREEN}' stroke-width='1.5'/>
+  <circle cx='60' cy='60' r='42' fill='none' stroke='#BBF7D0' stroke-width='0.8' opacity='0.55'/>
+  <g stroke='#F0FDF4' stroke-width='6' stroke-linecap='round' opacity='0.96'>
+    <path d='M40 40 L80 80'/>
+    <path d='M80 40 L40 80'/>
   </g>
-  <circle cx='54' cy='110' r='3.5' fill='#F1F5F9'/>
-  <circle cx='106' cy='110' r='3.5' fill='#F1F5F9'/>
-</svg>`;
-
-const nfsEmblemSvg = `
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 160'>
-  <defs>
-    <radialGradient id='ngo' cx='0.5' cy='0.5' r='0.55'>
-      <stop offset='0' stop-color='${NFS_PINK}' stop-opacity='0.42'/>
-      <stop offset='1' stop-color='${NFS_PINK}' stop-opacity='0'/>
-    </radialGradient>
-    <linearGradient id='npink' x1='0' y1='0' x2='1' y2='0'>
-      <stop offset='0' stop-color='#F43F5E'/>
-      <stop offset='0.5' stop-color='${NFS_PINK}'/>
-      <stop offset='1' stop-color='#F43F5E'/>
-    </linearGradient>
-  </defs>
-  <ellipse cx='110' cy='80' rx='108' ry='78' fill='url(#ngo)'/>
-  <g stroke='url(#npink)' stroke-width='2' stroke-linecap='round' opacity='0.7'>
-    <line x1='10' y1='30' x2='60' y2='38'/>
-    <line x1='160' y1='38' x2='210' y2='30'/>
-    <line x1='10' y1='130' x2='60' y2='122'/>
-    <line x1='160' y1='122' x2='210' y2='130'/>
-  </g>
-  <path d='M110 20 L136 80 L110 140 L84 80 Z' fill='url(#npink)' opacity='0.28'/>
-  <g fill='#F43F5E' stroke='${NFS_PINK}' stroke-width='2' stroke-linejoin='round' opacity='0.9'>
-    <path d='M84 62 L20 46 L58 66 Z'/>
-    <path d='M84 80 L2 80 L48 88 Z'/>
-    <path d='M84 98 L20 114 L58 94 Z'/>
-    <path d='M136 62 L200 46 L162 66 Z'/>
-    <path d='M136 80 L218 80 L172 88 Z'/>
-    <path d='M136 98 L200 114 L162 94 Z'/>
-  </g>
-  <path d='M110 20 L136 80 L110 140 L84 80 Z' fill='none' stroke='url(#npink)' stroke-width='3'/>
-  <g>
-    <path d='M92 90 L96 80 L108 76 L124 76 L134 82 L138 90 L138 96 L134 96 C133 100 129 100 128 96 L104 96 C103 100 99 100 98 96 L92 96 Z' fill='#1E1B22' stroke='${NFS_PINK}' stroke-width='1.2'/>
-    <circle cx='102' cy='96' r='2.4' fill='${NFS_PINK}'/>
-    <circle cx='130' cy='96' r='2.4' fill='${NFS_PINK}'/>
-    <path d='M100 82 L130 82' stroke='${NFS_PINK}' stroke-width='0.6' opacity='0.7'/>
-  </g>
+  <ellipse cx='50' cy='46' rx='11' ry='6' fill='white' opacity='0.4'/>
 </svg>`;
 
 const bodyDefs = [
-  { key: "doom", w: 130, h: 130, svg: doomEmblemSvg, vbW: 160, vbH: 160 },
-  { key: "cod", w: 130, h: 130, svg: codEmblemSvg, vbW: 160, vbH: 160 },
-  { key: "nfs", w: 170, h: 124, svg: nfsEmblemSvg, vbW: 220, vbH: 160 },
+  { key: "x1", w: 84, h: 84, vbW: 120, vbH: 120 },
+  { key: "x2", w: 72, h: 72, vbW: 120, vbH: 120 },
+  { key: "x3", w: 96, h: 96, vbW: 120, vbH: 120 },
+  { key: "x4", w: 68, h: 68, vbW: 120, vbH: 120 },
+  { key: "x5", w: 88, h: 88, vbW: 120, vbH: 120 },
+  { key: "x6", w: 60, h: 60, vbW: 120, vbH: 120 },
 ];
 
 // ---- Particle field ----
@@ -341,11 +270,14 @@ export default function HeroHeader() {
     });
     Composite.add(engine.world, xboxGuard);
 
-    // Positions: DOOM top-left, COD top-right, NFS bottom
+    // Positions: 6 spread across corners/edges, orbiting the central Xbox
     const positions = [
-      { x: width * 0.18, y: height * 0.28 },
-      { x: width * 0.82, y: height * 0.28 },
-      { x: width * 0.5, y: height * 0.82 },
+      { x: width * 0.15, y: height * 0.25 },
+      { x: width * 0.85, y: height * 0.25 },
+      { x: width * 0.12, y: height * 0.78 },
+      { x: width * 0.88, y: height * 0.78 },
+      { x: width * 0.5, y: height * 0.15 },
+      { x: width * 0.5, y: height * 0.86 },
     ];
 
     const bodies = [];
@@ -356,20 +288,20 @@ export default function HeroHeader() {
         friction: 0.02,
         frictionAir: 0.02,
         density: 0.001,
-        chamfer: { radius: 10 },
+        chamfer: { radius: def.w / 2 },
         render: {
           sprite: {
-            texture: svgToDataUrl(def.svg),
+            texture: svgToDataUrl(smallXboxSvg),
             xScale: def.w / def.vbW,
             yScale: def.h / def.vbH,
           },
         },
       });
       Body.setVelocity(b, {
-        x: (Math.random() - 0.5) * 1.2,
-        y: (Math.random() - 0.5) * 1.2,
+        x: (Math.random() - 0.5) * 1.4,
+        y: (Math.random() - 0.5) * 1.4,
       });
-      Body.setAngularVelocity(b, (Math.random() - 0.5) * 0.015);
+      Body.setAngularVelocity(b, (Math.random() - 0.5) * 0.02);
       bodies.push(b);
     });
     Composite.add(engine.world, bodies);
@@ -503,11 +435,9 @@ export default function HeroHeader() {
         >
           <div className="absolute inset-0 opacity-30 grid-bg" />
 
-          {/* Particle fields */}
-          <ParticleField color={XBOX_GREEN} count={26} />
-          <ParticleField color={DOOM_FIRE} count={14} region="tl" />
-          <ParticleField color={COD_STEEL} count={12} region="tr" />
-          <ParticleField color={NFS_PINK} count={16} region="b" />
+          {/* Particle field - all green now */}
+          <ParticleField color={XBOX_GREEN} count={40} />
+          <ParticleField color={XBOX_GREEN_DEEP} count={16} region="b" />
 
           {/* Static Xbox X sphere (bigger, centered, non-floating) */}
           <XboxSphere />
