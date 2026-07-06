@@ -6,13 +6,14 @@ const XBOX_GREEN_DEEP = "#107C10";
 
 const svgToDataUrl = (s) => `data:image/svg+xml;utf8,${encodeURIComponent(s)}`;
 
-// ---- Central Xbox X sphere (rendered as static DOM, not physics) ----
+// ---- Central Xbox X sphere + static controller (rendered as static DOM) ----
 const XboxSphere = () => (
   <div
-    className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+    className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 sm:gap-4 pointer-events-none"
     data-testid="xbox-sphere"
   >
-    <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[380px] lg:h-[380px]">
+    {/* Big X sphere with pulsing aura + orbiting rings */}
+    <div className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[340px] lg:h-[340px]">
       {/* Outer soft aura */}
       <div
         className="absolute inset-0 rounded-full xbox-pulse"
@@ -84,7 +85,6 @@ const XboxSphere = () => (
           strokeWidth="1.5"
           opacity="0.7"
         />
-        {/* The X mark */}
         <g
           stroke="#F0FDF4"
           strokeWidth="14"
@@ -95,7 +95,6 @@ const XboxSphere = () => (
           <path d="M60 60 L160 160" />
           <path d="M160 60 L60 160" />
         </g>
-        {/* Specular highlight */}
         <ellipse
           cx="82"
           cy="78"
@@ -105,6 +104,19 @@ const XboxSphere = () => (
           opacity="0.42"
         />
       </svg>
+    </div>
+
+    {/* Static big controller directly below the X sphere */}
+    <div
+      className="w-[130px] sm:w-[220px] lg:w-[260px] drop-shadow-[0_0_18px_rgba(34,197,94,0.45)]"
+      data-testid="static-controller"
+    >
+      <img
+        src={svgToDataUrl(smallControllerSvg)}
+        alt=""
+        aria-hidden="true"
+        className="w-full h-auto block"
+      />
     </div>
   </div>
 );
@@ -175,7 +187,6 @@ const bodyDefs = [
   { key: "x2", w: 96, h: 96, vbW: 120, vbH: 120, svg: smallXboxSvg },
   { key: "x3", w: 68, h: 68, vbW: 120, vbH: 120, svg: smallXboxSvg },
   { key: "x4", w: 76, h: 76, vbW: 120, vbH: 120, svg: smallXboxSvg },
-  { key: "ctrl", w: 116, h: 74, vbW: 140, vbH: 90, svg: smallControllerSvg },
   { key: "vctrl1", w: 72, h: 46, vbW: 140, vbH: 90, svg: smallControllerSvg },
   { key: "vctrl2", w: 68, h: 44, vbW: 140, vbH: 90, svg: smallControllerSvg },
 ];
@@ -306,13 +317,12 @@ export default function HeroHeader() {
     });
     Composite.add(engine.world, xboxGuard);
 
-    // Positions: 4 X orbs + 1 big controller + 2 small controllers, orbiting the central Xbox
+    // Positions: 4 X orbs + 2 small controllers, orbiting the central Xbox
     const positions = [
       { x: width * 0.15, y: height * 0.25 },
       { x: width * 0.85, y: height * 0.28 },
       { x: width * 0.12, y: height * 0.78 },
       { x: width * 0.88, y: height * 0.76 },
-      { x: width * 0.5, y: height * 0.85 },
       { x: width * 0.35, y: height * 0.14 },
       { x: width * 0.65, y: height * 0.14 },
     ];
