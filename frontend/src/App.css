@@ -149,3 +149,19 @@
   border-radius: 999px;
   box-shadow: 0 0 8px rgba(16, 124, 16, 0.55);
 }
+
+/* Particle drift for anti-gravity zone */
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(var(--dx, 20px), var(--dy, -20px));
+    opacity: 0.9;
+  }
+}
+.particle-drift {
+  animation: particle-drift ease-in-out infinite;
+}
