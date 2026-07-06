@@ -135,13 +135,47 @@ const smallXboxSvg = `
   <ellipse cx='50' cy='46' rx='11' ry='6' fill='white' opacity='0.4'/>
 </svg>`;
 
+const smallControllerSvg = `
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 90'>
+  <defs>
+    <linearGradient id='ctrlBody' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#4ADE80'/>
+      <stop offset='0.55' stop-color='${XBOX_GREEN}'/>
+      <stop offset='1' stop-color='#064E3B'/>
+    </linearGradient>
+    <radialGradient id='ctrlGlow' cx='0.5' cy='0.5' r='0.5'>
+      <stop offset='0.55' stop-color='${XBOX_GREEN}' stop-opacity='0'/>
+      <stop offset='0.9' stop-color='${XBOX_GREEN}' stop-opacity='0.32'/>
+      <stop offset='1' stop-color='${XBOX_GREEN}' stop-opacity='0'/>
+    </radialGradient>
+  </defs>
+  <ellipse cx='70' cy='45' rx='68' ry='42' fill='url(#ctrlGlow)'/>
+  <path d='M28 22 C16 24 8 36 10 52 C12 66 20 78 30 78 C38 78 42 72 48 68 L92 68 C98 72 102 78 110 78 C120 78 128 66 130 52 C132 36 124 24 112 22 C100 20 92 26 86 32 L54 32 C48 26 40 20 28 22 Z' fill='url(#ctrlBody)' stroke='#BBF7D0' stroke-width='1.8'/>
+  <g fill='#F0FDF4'>
+    <circle cx='36' cy='46' r='3.2'/>
+    <circle cx='36' cy='58' r='3.2'/>
+    <circle cx='30' cy='52' r='3.2'/>
+    <circle cx='42' cy='52' r='3.2'/>
+  </g>
+  <g fill='#F0FDF4'>
+    <circle cx='98' cy='46' r='3'/>
+    <circle cx='110' cy='46' r='3'/>
+    <circle cx='98' cy='58' r='3'/>
+    <circle cx='110' cy='58' r='3'/>
+  </g>
+  <circle cx='70' cy='38' r='4.2' fill='#F0FDF4' stroke='${XBOX_GREEN}' stroke-width='1'/>
+  <g stroke='${XBOX_GREEN}' stroke-width='1.1' stroke-linecap='round'>
+    <path d='M67 36 L73 40'/>
+    <path d='M73 36 L67 40'/>
+  </g>
+</svg>`;
+
 const bodyDefs = [
-  { key: "x1", w: 84, h: 84, vbW: 120, vbH: 120 },
-  { key: "x2", w: 72, h: 72, vbW: 120, vbH: 120 },
-  { key: "x3", w: 96, h: 96, vbW: 120, vbH: 120 },
-  { key: "x4", w: 68, h: 68, vbW: 120, vbH: 120 },
-  { key: "x5", w: 88, h: 88, vbW: 120, vbH: 120 },
-  { key: "x6", w: 76, h: 76, vbW: 120, vbH: 120 },
+  { key: "x1", w: 84, h: 84, vbW: 120, vbH: 120, svg: smallXboxSvg },
+  { key: "x2", w: 96, h: 96, vbW: 120, vbH: 120, svg: smallXboxSvg },
+  { key: "x3", w: 68, h: 68, vbW: 120, vbH: 120, svg: smallXboxSvg },
+  { key: "x4", w: 76, h: 76, vbW: 120, vbH: 120, svg: smallXboxSvg },
+  { key: "ctrl", w: 116, h: 74, vbW: 140, vbH: 90, svg: smallControllerSvg },
 ];
 
 // ---- Particle field ----
@@ -270,30 +304,35 @@ export default function HeroHeader() {
     });
     Composite.add(engine.world, xboxGuard);
 
-    // Positions: 6 spread across corners/edges, orbiting the central Xbox
+    // Positions: 5 orbits around the central Xbox (4 X orbs + 1 controller)
     const positions = [
       { x: width * 0.15, y: height * 0.25 },
-      { x: width * 0.85, y: height * 0.25 },
+      { x: width * 0.85, y: height * 0.28 },
       { x: width * 0.12, y: height * 0.78 },
-      { x: width * 0.88, y: height * 0.78 },
-      { x: width * 0.5, y: height * 0.15 },
-      { x: width * 0.5, y: height * 0.86 },
+      { x: width * 0.88, y: height * 0.76 },
+      { x: width * 0.5, y: height * 0.85 },
     ];
+
+    // Also reduce sizes on small viewports to avoid crowding
+    const scale = width < 640 ? 0.7 : 1;
 
     const bodies = [];
     bodyDefs.forEach((def, i) => {
       const p = positions[i];
-      const b = Bodies.rectangle(p.x, p.y, def.w, def.h, {
+      const w = def.w * scale;
+      const h = def.h * scale;
+      const isControllerish = def.vbW !== def.vbH;
+      const b = Bodies.rectangle(p.x, p.y, w, h, {
         restitution: 0.9,
         friction: 0.02,
         frictionAir: 0.045,
         density: 0.001,
-        chamfer: { radius: def.w / 2 },
+        chamfer: { radius: isControllerish ? 12 : w / 2 },
         render: {
           sprite: {
-            texture: svgToDataUrl(smallXboxSvg),
-            xScale: def.w / def.vbW,
-            yScale: def.h / def.vbH,
+            texture: svgToDataUrl(def.svg),
+            xScale: w / def.vbW,
+            yScale: h / def.vbH,
           },
         },
       });
@@ -306,17 +345,22 @@ export default function HeroHeader() {
     });
     Composite.add(engine.world, bodies);
 
-    const mouse = Mouse.create(render.canvas);
-    const mc = MouseConstraint.create(engine, {
-      mouse,
-      constraint: {
-        stiffness: 0.12,
-        damping: 0.15,
-        render: { visible: false },
-      },
-    });
-    Composite.add(engine.world, mc);
-    render.mouse = mouse;
+    // Only enable drag interactivity on non-mobile viewports so mobile touch
+    // scrolling passes through cleanly.
+    let mc = null;
+    if (width >= 768) {
+      const mouse = Mouse.create(render.canvas);
+      mc = MouseConstraint.create(engine, {
+        mouse,
+        constraint: {
+          stiffness: 0.12,
+          damping: 0.15,
+          render: { visible: false },
+        },
+      });
+      Composite.add(engine.world, mc);
+      render.mouse = mouse;
+    }
 
     // Drift keeper + gentle repulsion from Xbox center for orbital feel
     const iv = setInterval(() => {
@@ -417,22 +461,23 @@ export default function HeroHeader() {
       </div>
 
       {/* Anti-gravity zero-G composition */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pb-14">
-        <div className="flex items-center justify-between mb-4 relative z-30">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 pb-8 sm:pb-14">
+        <div className="flex items-center justify-between mb-3 sm:mb-4 relative z-30">
           <span className="hud-tag">Featured Games</span>
           <span className="font-heading text-[10px] tracking-hud uppercase text-neutral-500 hidden sm:inline">
             Installed · 3
           </span>
         </div>
         <div
-          className="relative w-full h-[460px] sm:h-[520px] lg:h-[560px] border border-neutral-200 overflow-hidden corner-cut"
+          className="relative w-full h-[300px] sm:h-[520px] lg:h-[560px] border border-neutral-200 overflow-hidden corner-cut"
           style={{
             background:
               "radial-gradient(circle at 50% 50%, rgba(34,197,94,0.08) 0%, rgba(255,255,255,0.9) 55%, #FFFFFF 100%)",
+            touchAction: "pan-y",
           }}
           data-testid="anti-gravity-stage"
         >
-          <div className="absolute inset-0 opacity-30 grid-bg" />
+          <div className="absolute inset-0 opacity-30 grid-bg pointer-events-none" />
 
           {/* Particle field - all green now */}
           <ParticleField color={XBOX_GREEN} count={40} />
@@ -441,10 +486,11 @@ export default function HeroHeader() {
           {/* Static Xbox X sphere (bigger, centered, non-floating) */}
           <XboxSphere />
 
-          {/* Physics canvas for 3 orbiting emblems */}
+          {/* Physics canvas — disabled on mobile so page can scroll */}
           <div
             ref={sceneRef}
-            className="absolute inset-0 z-20"
+            className="absolute inset-0 z-20 pointer-events-none md:pointer-events-auto"
+            style={{ touchAction: "pan-y" }}
             data-testid="anti-gravity-canvas"
           />
 
